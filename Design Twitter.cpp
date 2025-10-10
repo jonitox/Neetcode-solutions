@@ -2,8 +2,8 @@
 using namespace std;
 
 class Twitter {
-public:
-    int count = 0;
+public:s
+    int count = 0;  // counter to maintain the order of tweets
     unordered_map<int, unordered_set<int>> follows; // followerId -> set of followeeIds
     map<int, pair<int,int>, greater<int>> tweets; // count -> {userId, tweetId}
     
