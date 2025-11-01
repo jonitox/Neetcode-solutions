@@ -12,7 +12,7 @@ public:
             int mid = (lo+hi)/2;
             int time = 0;
             for(int&p : piles)
-                time += (p-1)/mid +1;
+                time += (p-1)/mid +1; // hours needed for pile p at speed mid
             if(time > h)
                 lo = mid; 
             else
