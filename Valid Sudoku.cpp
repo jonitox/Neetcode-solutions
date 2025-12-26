@@ -4,8 +4,10 @@ using namespace std;
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
+        
+        // check rows
         for(int r=0; r<9; ++r){
-            int cnt = 0;
+            int cnt = 0; // bitmask to track seen numbers
             for(int c=0; c<9; ++c){
                 char x = board[r][c];
                 if(x == '.') continue;
@@ -13,6 +15,7 @@ public:
                 cnt |= 1<<(x-'1');
             }
         }
+        // check columns
         for(int c=0; c<9; ++c){
             int cnt = 0;
             for(int r=0; r<9; ++r){
@@ -29,6 +32,7 @@ public:
             {6,0}, {6,3}, {6,6}
         };
 
+        // check 3x3 sub-boxes  
         for(auto& [r,c]: v){
             int cnt =0;
             for(int i=0; i<3; ++i)
