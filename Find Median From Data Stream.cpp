@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class MedianFinder {
+public:
+    priority_queue<int> max_heap; // lower half
+    priority_queue<int, vector<int>, greater<int>> min_heap; // upper half
+    
+    MedianFinder() {
+
+    }
+    
+    void addNum(int num) {
+        if(max_heap.empty() || num < max_heap.top()) // if num is smaller than the largest in lower half    
+            max_heap.push(num);
+        else
+            min_heap.push(num);
+        
+        // balance the sizes of the two heaps. Max-heap can have at most 1 more element than min-heap
+        if(max_heap.size() < min_heap.size()) { 
+            max_heap.push(min_heap.top());
+            min_heap.pop();
+        } else if(max_heap.size() > min_heap.size()+1) {
+            min_heap.push(max_heap.top());
+            max_heap.pop();
+        }
+
+    }
+    
+    double findMedian() {
+        return max_heap.size() == min_heap.size() ? 
+            (max_heap.top() + min_heap.top())/2.0 : // even number of elements
+            max_heap.top(); // odd number of elements
+            
+    }
+};
+
+
+
+int main() {
+    // test code (optional)
+    return 0;
+}
