@@ -3,7 +3,7 @@ using namespace std;
 
 class Solution {
 public:
-/*  using min-heap
+/*  min-heap approach
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int,int> m;
         for(int a: nums){
@@ -24,7 +24,7 @@ public:
     }
 */
 
-    //  using bucket sort
+    // bucket sort approach
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int,int> m;
         for(int a: nums){
