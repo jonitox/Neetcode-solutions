@@ -9,20 +9,21 @@ public:
     vector<vector<int>> permute(vector<int>& nums) {
         n = nums.size();
         vector<int> per;
-        bruteForce(nums, per, 0);
+        backtrack(nums, per, 0);
         return ans;
     }
 
-    void bruteForce(vector<int>& nums, vector<int>& per, int mask) {
+    // backtracking with bitmask to track used elements
+    void backtrack(vector<int>& nums, vector<int>& per, int mask) {
         if(per.size() == n){
             ans.push_back(per);
             return;
         }
 
         for(int i=0; i<n; ++i){
-            if(mask& (1<<i)) continue;
+            if(mask& (1<<i)) continue; // already used
             per.push_back(nums[i]);
-            bruteForce(nums, per, mask | (1<<i));
+            backtrack(nums, per, mask | (1<<i));
             per.pop_back();
         }
         
