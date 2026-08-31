@@ -41,7 +41,7 @@ public:
         }
 
         // topological sort. consider only alphabets that exist in words.
-        queue<int> q;
+        queue<int> q;₩
         for(int i=0; i<26; ++i){
             if(seen[i] && inDeg[i]==0)
                 q.push(i);
